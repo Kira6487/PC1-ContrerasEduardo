@@ -1,0 +1,123 @@
+*{ box-sizing: border-box; }
+
+body{
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 280px;
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    color: #1f2937;
+    /* Grid template para definir el diseño */
+    grid-template-areas: 
+        "header header header"
+        "main main aside"
+        "footer footer footer";
+}
+
+header{
+    grid-area: header;
+    background-color: #172554;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.eyebrow{ 
+    color: #93c5fd; 
+    font-size: .75rem; 
+    font-weight: bold; 
+    letter-spacing: .12em; 
+}
+
+main{
+    grid-area: main;
+    background-color: #f8fafc;
+    padding: 20px;
+    display: grid;
+    /* Se define las columnas con Grid */
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: start;
+}
+
+.intro{ 
+    color: #64748b; 
+}
+.kpi-cards{ 
+    grid-column: 1 / -1; 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 20px; 
+    margin: 12px 0 20px; 
+}
+.kpi-card{ 
+    flex: 1; 
+    padding: 22px; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 12px; 
+    background: white;
+}
+
+.kpi-title, .kpi-trend{ 
+    display: block; 
+}
+.kpi-title{ 
+    color: #64748b; 
+    font-size: .9rem; 
+}
+.kpi-value{ 
+    display: block; 
+    margin: 10px 0; 
+    color: #172554; 
+    font-size: 1.8rem; 
+}
+.kpi-trend{ 
+    font-size: .78rem;
+    color: #059669; 
+}
+
+.widget{
+    background-color: #dbeafe;
+    color: #1e3a8a;
+    padding: 10px;
+    margin-top: 20px;
+    /* Se especifica el ancho de 2 columnas */
+    grid-column: span 2;
+}
+
+aside{
+    grid-area: aside;
+    background-color: #e0e7ff;
+    padding: 20px;
+}
+
+.sidebar-image{
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+footer{ grid-area: footer; padding: 16px; background: #172554; color: #cbd5e1; text-align: center; }
+
+
+/* Media Query para adaptar el diseño a pantallas más pequeñas */
+@media (max-width: 768px) {
+    body{
+        grid-template-columns: 1fr;
+        /*Definimos una sección debajo de la otra*/
+        grid-template-areas: 
+            "header"
+            "main"
+            "aside"
+            "footer";
+    }
+    main{
+        /*main siempre ocupa toda la columna*/
+        grid-template-columns: 1fr;
+    }
+    .widget{
+        grid-column: span 1;
+    }
+    .kpi-cards{
+        /*Las tarjetas KPI se mostrarán en una columna */
+        flex-direction: column;
+    }
+}
